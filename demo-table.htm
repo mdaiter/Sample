@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Sample Sheet</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+    <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
+    <script type='text/javascript' src='js/sheetsee.js'></script>
+  </head>
+ <body>
+  <div class="container">
+    <h1>Data</h1>
+    <input id="fullTableFilter" type="text" placeholder="filter by.."></input>
+    <div id="fullTable"></div>
+  </div>
+
+<script id="fullTable_template" type="text/html">
+  <table>
+    <tr><th class="tHeader">Name</th><th class="tHeader">Age</th><th class="tHeader">location</th><th class="tHeader">Color</th></tr>
+      {{#rows}}
+        <tr><td>{{name}}</td><td>{{age}}</td><td>{{location}}</td><td>{{color}}</td></tr>
+      {{/rows}}
+  </table>
+</script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var URL = "1i75zV86XJHxqQoJhmF5CnHcpeHfUX_NUU4qi0ZvNsvI"
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+  })
+
+  function showInfo(data) {
+    var tableOptions = {"data": data
+    , "pagination": 10, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
+    Sheetsee.makeTable(tableOptions)
+    Sheetsee.initiateTableFilter(tableOptions)
+
+  }
+
+
+</script>
+
+</body>
+</html>
