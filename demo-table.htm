@@ -4,9 +4,12 @@
     <meta charset='utf-8'>
     <title>Sample Sheet</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-    <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
-    <script type='text/javascript' src='js/sheetsee.js'></script>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+	<script type='text/javascript' src='https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js'></script>
+	<script type='text/javascript' src='js/tabletop1.3.4.js'></script>
+	<script type='text/javascript' src='js/sheetsee.js'></script>
+	<script type='text/javscript' src='https://code.jquery.com/jquery-1.11.1.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
   </head>
  <body>
   <div class="container">
@@ -16,11 +19,12 @@
   </div>
 
 <script id="fullTable_template" type="text/html">
-  <table>
-    <tr><th class="tHeader">Name</th><th class="tHeader">Age</th><th class="tHeader">location</th><th class="tHeader">Color</th></tr>
+  <table id="firstTable">
+	  <thead><th class="tHeader">Name</th><th class="tHeader">Age</th><th class="tHeader">location</th><th class="tHeader">Color</th></tr></thead>
       {{#rows}}
         <tr><td>{{name}}</td><td>{{age}}</td><td>{{location}}</td><td>{{color}}</td></tr>
-      {{/rows}}
+	  {{/rows}}
+	   <tfoot><th class="tHeader">Name</th><th class="tHeader">Age</th><th class="tHeader">location</th><th class="tHeader">Color</th></tr></tfoot>
   </table>
 </script>
 <script type="text/javascript">
@@ -33,8 +37,8 @@
     var tableOptions = {"data": data
     , "pagination": 10, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
     Sheetsee.makeTable(tableOptions)
-    Sheetsee.initiateTableFilter(tableOptions)
-
+    //Sheetsee.initiateTableFilter(tableOptions)
+  	$('#firstTable').DataTable()
   }
 
 
